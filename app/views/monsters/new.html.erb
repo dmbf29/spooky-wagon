@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Add Monster to <%= @house.name %></h1>
+  <%= simple_form_for [@house, @monster] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :image_url %>
+    <%= f.input :species, input_html: { value: Faker::Games::Witcher.monster } %>
+    <%= f.submit class: 'btn btn-danger' %>
+  <% end %>
+</div>

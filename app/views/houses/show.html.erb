@@ -1,0 +1,19 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @house.banner_url %>);">
+  <div class="container">
+    <h1><%= @house.name %></h1>
+    <p>Check out the monsters</p>
+    <%= link_to 'Add', new_house_monster_path(@house), class: 'btn btn-danger' %>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="cards">
+    <% @house.monsters.each do |monster| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= monster.image_url %>)">
+        <%= monster.name %>
+        <%= link_to monster_path(monster), method: :delete , class: 'card-remove-link', data: {confirm: "Kill #{monster.name}?"} do %>
+          <i class="fas fa-skull-crossbones"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
