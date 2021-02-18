@@ -85,3 +85,20 @@ Monster.create!(
   species: 'mut',
   house: house
 )
+
+
+puts "Deleting Powers...."
+MonsterPower.destroy_all
+Power.destroy_all
+
+puts "Creating powers....."
+30.times do
+  Power.create(name: Faker::Superhero.power)
+end
+
+# house show page with monster ✅
+# need to add a power to a monster
+# => monster_power#new / monster_power#create
+# display the powers on the monster card
+
+
