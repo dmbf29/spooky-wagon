@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Added
 gem 'autoprefixer-rails'
+gem 'cloudinary', '~> 1.16.0'
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form'

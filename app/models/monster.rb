@@ -4,5 +4,6 @@ class Monster < ApplicationRecord
   has_many :powers, through: :monster_powers
   # monster.powers
   validates :name, presence: true
-  validates :image_url, presence: true
+  # validates :image_url, presence: true
+  has_one_attached :photo
 end
