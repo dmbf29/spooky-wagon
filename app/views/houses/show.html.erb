@@ -6,11 +6,10 @@
   </div>
 </div>
 <div class="container my-5">
-  <%= cl_image_tag 'lxbmvukgtcyn39og8v64', width: 150, height: 150 %>
-  <%= cl_image_tag 'jd7o3jimbnmtfxb5vqyc', width: 400, height: 300, crop: :thumb, gravity: :face %>
   <div class="cards">
     <% @house.monsters.each do |monster| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= monster.image_url %>)">
+      <% if monster.photo.attached? %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path monster.photo.key %>)">
         <%= monster.name %>
         <%= link_to monster_path(monster), method: :delete , class: 'card-remove-link', data: {confirm: "Kill #{monster.name}?"} do %>
           <i class="fas fa-skull-crossbones"></i>
@@ -24,6 +23,22 @@
           <% end %>
         </div>
       </div>
+    <% else %>
+       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= monster.image_url %>)">
+        <%= monster.name %>
+        <%= link_to monster_path(monster), method: :delete , class: 'card-remove-link', data: {confirm: "Kill #{monster.name}?"} do %>
+          <i class="fas fa-skull-crossbones"></i>
+        <% end %>
+        <%= link_to new_monster_monster_power_path(monster), class: 'card-add-link' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+        <div class="card-tags">
+          <% monster.powers.each do |power| %>
+            <span><%= power.name %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <% end %>
   </div>
 </div>

@@ -26,6 +26,6 @@ class MonstersController < ApplicationController
 
   def monster_params
     # coming from the form
-    params.require(:monster).permit(:name, :image_url, :species)
+    params.require(:monster).permit(:name, :image_url, :species, :photo)
   end
 end
