@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_18_081348) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "houses", force: :cascade do |t|
     t.string "name"
     t.string "banner_url"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_081348) do
   end
 
   create_table "monster_powers", force: :cascade do |t|
-    t.integer "power_id", null: false
-    t.integer "monster_id", null: false
+    t.bigint "power_id", null: false
+    t.bigint "monster_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["monster_id"], name: "index_monster_powers_on_monster_id"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_081348) do
     t.string "name"
     t.string "image_url"
     t.string "species"
-    t.integer "house_id", null: false
+    t.bigint "house_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["house_id"], name: "index_monsters_on_house_id"
